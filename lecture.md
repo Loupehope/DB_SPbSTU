@@ -361,3 +361,7 @@ Server generated errors - что-то не так с экземпляром, и�
 DBA_outstanding_alerts - пришедшие ошибки 
 //MMON
 DBA_alert_history - поправленные ошибки
+
+AMM - общий объем выделенный экземпляру (+ PGA SGA) - memory_tagret
+ASMM - опредялется общий размер SGA - sga_target (shared, java, buffer, streams но не буффер REDO LOG BUFFER)
+
