@@ -328,3 +328,36 @@ Audit_file_dest
   ADDM - самостоятельно настраиваются
   
   Создать baseline - промежуток снепшотов, когда всё было хорошо. DBMS_WORKLAND_REPOSITORY.CREATE_BASELINE. Single, Repeated - расписание бейзлайнов. 
+  ADDM - самостоятельно настраиваются
+  
+  Создать baseline - промежуток снепшотов, когда всё было хорошо. DBMS_WORKLAND_REPOSITORY.CREATE_BASELINE. Single, Repeated - расписание бейзлайнов.
+  
+  Уровень сбора статистики:
+  - Basic - отключает большую часть функциональности ADDM
+  - Typical - рекомендованный
+  - All - добавляет sql tanning информацию к снепшотам
+
+ADDM - automatic database diagnostic monitor
+- Запускается полбе каждого снепшота AWR
+- Анализирует экземпляр и находит узкие места
+- Результаты хранятся в AWR
+
+Топ SQL, которые вносят время в DB Time - затраты времени внутри бд
+Buffer busy - серверный процесс хочет перенести данные из файлов данных в буффер данных, но там занято
+
+Advisory framework
+ADDM:
+- SQL tanning advisor - помогает оптимизировать планы выполнения запросов
+- SQL access advisor - рекомендует использовать индексы и рекомендации по материализованным представлениям
+- Memory advisor - регулировка оперативной памяти (SGA (buffer cache, shared pool, java pool, streams pool) / PGA)
+- Space - управление место на диске | segmetn (сжатие и тд) и undo adviser (размер undo)
+- Backup - Min time to recover - если экземпляр упал, то мы говорим, чтобы он восстановился в течение времени какого-то (среднее время на восстановление)
+
+Chekers - проверка например блоков данных
+
+Automatic Maintenance Tasks - задачи автоматического обслуживания
+
+Server generated errors - что-то не так с экземпляром, инфа передается в AWR и в EM
+DBA_outstanding_alerts - пришедшие ошибки 
+//MMON
+DBA_alert_history - поправленные ошибки
