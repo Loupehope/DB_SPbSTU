@@ -1,4 +1,4 @@
-# Лекиия 1
+# Лекиия 11
 # Flashback
 
 - Flashback query - запросы к старому состоянию таблицы в каком-то моменте времени.  
@@ -56,3 +56,34 @@ Logminer - для упрощения восстановления - опреде
 3. Cascade - будут откатаны изменения в зависимых и целевой транзакциях
 
 Отчеты об откатах - dba_flashback_txn_state, dba_fkashback_txn_report.  
+
+# Лекиия 12
+# Flashback transaction
+
+Осуществляется онлайн и требует:
+1. Наличие прав Fkashback any table или наличии привилегии Flashback для конкретной таблицы.
+2. Наличие привилегий select, insert, delete, alter - dml 
+3. Включить row movement (alter table <name> enable row movement)
+
+Ограничения:
+1. Статистика не откатывается
+2. Невозможно для системных таблиц, не включает ddl операции, не генерирует undo/redo
+3. Поддерживаются текщие индексы и зависимости
+4. Выполняется как единая транзакция с exclusive DML lock.
+
+# Flashback database
+
+Подготовительный этап:
+1. SHUTDOWN IMMEDIATE;
+2. STARTUP MOUNT EXCLUSIVE;
+3. ALTER SYSTEM SET DB_FLASHBACK_RETENTION_TARGET=2880 SCOPE=BOTH;
+4. ALTER DATABASE FLASHBACK ON;
+5. ALTER DATABASE OPEN;
+
+Когда не можем использовать Flashback database:
+1. Контрольные файлы были восстановлены или заново созданы
+2. Табличичное пространство было удалено
+3. Файлы данных увеличились в размере
+  
+Гарантированная точка восстановления гарантирует, что вы можете выполнить
+Команда FLASHBACK DATABASE на этот SCN в любое время.
