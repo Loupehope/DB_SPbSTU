@@ -1,3 +1,5 @@
 # DB_SPbSTU
 
-[Лекции](lecture.md)
+[7 семестр - лекции](lecture.md)
+
+[8 семестр - лекции](lecture2.md)
