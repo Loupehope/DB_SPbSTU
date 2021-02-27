@@ -173,6 +173,62 @@ RUN - запуск пакетов (job).
 REPORT OBSOLETE - отчет по устаревшим файлам.   
 DELETE OBSOLETE - удаление устаревших копий.   
 
+# Лекиия 15
 
+Rman + controlfile:
+- Простота администрирования
+- По умолчанию
 
+Rman + recovery catalog:
+- Копии controlfiles
+- Может обслуживаться нексолько бд
+- Сохранение скриптов
+- Отчеты для таргетов
+- Возможность хранить бекапы вечно
+
+Метаданные: backup set list, image copy list
+В Recovery catalog database хранится:
+- Инфомрация о структуре бд
+- Архивы журналов повторов
+- Backup sets
+- Data file copies
+
+Dublicate database
+Если сделали дубликат бд и пытаемся ее зарегистрировать в каталоге (clone), то будет ошибка, так как бд уже есть. В клоне не меняется id (dbid) не изменяется (dbid v$database). Чтобы изменить dbid утилита - dbnewid - `nid target=user/pass@svc_name [DBNAME=new_dbname]` - база должна быть в режиме mount.
+
+Чтобы будет после смены:
+- Предыдущие бекапы и логи недоступны
+- Надо открыть бд с resetlogs
+- Сделать копию бд
+
+Unregister database - отвязать бд от каталога.
+
+В каталог можно добавить:
+- Копии controlfile
+- Data file
+- Backup
+- Archived redo log.   
+
+Пересинхронизация:
+- Частичная: журналы повторов, backup sets, data file copies.
+- Полная: частичная + структура бд (создается снепшот файла управления).   
+
+Resync:
+- Выполнение нечастых бекпов
+- Изменена структура бд
+
+Скрипты:
+- Локальные - ассоциированы с конкретной бд (CREATE SCRIPT)
+- Глобальные - работает с любой бд (CREATE GLOBAL SCRIPT).   
+
+Резервное копирование каталога:
+- На диск
+- На ленточное устройство
+- Копия файлов управления
+
+Resync catalog (на основии файла управления) или catalog start with.   
+Экспрот и импорт (export, import) - создаем логическое резервное копирование (набор команд для выполнения)
+
+Virtual private catalog - кусок из основного каталога. (GRANT REGISTER [Catalog] DATABSE [NAME] TO user).   
+`create virtual catalog;`.  
 
