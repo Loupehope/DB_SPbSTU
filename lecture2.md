@@ -192,8 +192,8 @@ Rman + recovery catalog:
 В Recovery catalog database хранится:
 - Инфомрация о структуре бд
 - Архивы журналов повторов
-- Backup sets
-- Data file copies
+- Информация по Backup sets
+- Информация по Data file copies
 
 Dublicate database
 Если сделали дубликат бд и пытаемся ее зарегистрировать в каталоге (clone), то будет ошибка, так как бд уже есть. В клоне не меняется id (dbid) не изменяется (dbid v$database). Чтобы изменить dbid утилита - dbnewid - `nid target=user/pass@svc_name [DBNAME=new_dbname]` - база должна быть в режиме mount.
