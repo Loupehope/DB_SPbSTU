@@ -7,11 +7,11 @@
 	- [Free buffer waits](#Free-buffer-waits)
 	- [Buffer busy waits](#Buffer-busy-waits)
 
-- [Лекция 3](#Лекция-13)
+- [Лекция 3](#3-Лекция)
 	- [Baselines](#Baselines)
 	- [DBMS_WORKLOAD_REPOSITORY](#DBMS_WORKLOAD_REPOSITORY)
 
-- [Лекция 4](#Лекция-14)
+- [Лекция 4](#4-Лекция)
 	- Ничего полезного
 
 # 1 Лекция
