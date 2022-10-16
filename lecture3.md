@@ -163,6 +163,13 @@ Active Session History - хранит историю в течение DB time:
 - память для ASH берется в SGA и фиксируется для времени жизни экземпляра - 2 МБ памяти на CPU.
 - ASH не может превысить максимальную границу в 5% от величины shared_pool_size или от SGA_TARGET.
 
+Доступ к ASH:
+- Dump a trace file
+- V$Active_session_history
+- DBA_HIST_ACTIVE_SESS_HISTORY
+- ASH report
+- EM
+
 # 8 Лекция
 
 Ничего полезного - общие советы по поиску проблем в БД.
